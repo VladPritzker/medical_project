@@ -1,0 +1,77 @@
+
+.auth-container {
+  width: 350px;
+  padding: 30px;
+  margin: 10% auto 0 auto; /* Set margin-top to 10% */
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  backdrop-filter: blur(10px); /* Blur effect for a frosted glass look */
+  text-align: center;
+}
+
+.auth-container h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.auth-container form div {
+  margin-bottom: 20px;
+}
+
+.auth-container form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.auth-container form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+.auth-container form input:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.auth-container form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container form button:hover {
+  background-color: #0056b3;
+}
+
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+  background-color: #218838;
+}

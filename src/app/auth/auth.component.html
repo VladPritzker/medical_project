@@ -1,1 +1,21 @@
-<p>auth works!</p>
+<div class="auth-container">
+  <h2>{{ isLoginMode ? 'Login' : 'Register' }}</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div *ngIf="!isLoginMode">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="authData.username" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="authData.email" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="authData.password" required>
+    </div>
+    <button type="submit">{{ isLoginMode ? 'Login' : 'Register' }}</button>
+  </form>
+  <button (click)="onSwitchMode()">
+    Switch to {{ isLoginMode ? 'Register' : 'Login' }}
+  </button>
+</div>
