@@ -36,10 +36,14 @@ export class AuthComponent {
     if (this.isLoginMode) {
       this.authService.login(loginData).subscribe(response => {
         console.log('Login successful', response);
+      }, error => {
+        console.error('Login failed', error);
       });
     } else {
       this.authService.register(registerData).subscribe(response => {
         console.log('Registration successful', response);
+      }, error => {
+        console.error('Registration failed', error);
       });
     }
   }
