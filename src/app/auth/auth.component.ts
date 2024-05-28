@@ -27,6 +27,7 @@ export class AuthComponent {
       password: this.authData.password
     };
 
+
     const registerData = {
       username: this.authData.username,
       email: this.authData.email,
