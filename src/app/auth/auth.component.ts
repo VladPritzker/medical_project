@@ -22,6 +22,7 @@ export class AuthComponent {
     this.isLoginMode = !this.isLoginMode;
   }
 
+
   onSubmit() {
     const loginData = {
       email: this.authData.email,
