@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user-account/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user-account',
@@ -8,21 +9,27 @@ import { UserService } from '../user-account/user.service';
 })
 export class UserAccountComponent implements OnInit {
   user: any = {};
+  userId: string | null = '';
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.getUserDetails();
+    this.userId = this.route.snapshot.paramMap.get('userId'); // Make sure this is correct
+    if (this.userId) {
+      this.getUserDetails();
+    }
   }
 
   getUserDetails(): void {
-    this.userService.getUserDetails().subscribe(
-      (data) => {
-        this.user = data;
-      },
-      (error) => {
-        console.error('Error fetching user details', error);
-      }
-    );
+    if (this.userId) {
+      this.userService.getUserDetails(this.userId).subscribe(
+        (data) => {
+          this.user = data;
+        },
+        (error) => {
+          console.error('Error fetching user details', error);
+        }
+      );
+    }
   }
 }

@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms'; // Import FormsModule to use ngModel
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { UserAccountComponent } from './user-account/user-account.component';
-import { AuthService } from './auth/auth.service';
-import { UserService } from './user-account/user.service';
 
-const appRoutes: Routes = [
+const routes: Routes = [
   { path: 'auth', component: AuthComponent },
-  { path: 'user-account', component: UserAccountComponent },
+  { path: 'user-account/:userId', component: UserAccountComponent },
   { path: '', redirectTo: '/auth', pathMatch: 'full' }
 ];
 
@@ -24,11 +22,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule,
+    FormsModule, // Add FormsModule here
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(routes)
   ],
-  providers: [AuthService, UserService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

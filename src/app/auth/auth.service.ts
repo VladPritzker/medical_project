@@ -6,16 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-
-  private baseUrl = 'http://localhost:8001/users/';
+  private apiUrl = 'http://127.0.0.1:8001'; // Base URL for the Django API
 
   constructor(private http: HttpClient) { }
 
-  register(user: any): Observable<any> {
-    return this.http.post(this.baseUrl, user);
+  login(loginData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/users/`, loginData);
   }
 
-  login(user: any): Observable<any> {
-    return this.http.post(this.baseUrl, user);
+  register(registerData: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/users/`, registerData);
   }
 }
