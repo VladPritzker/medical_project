@@ -1,0 +1,32 @@
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f5f5f5;
+}
+
+.user-card {
+  width: 400px;
+  max-width: 100%;
+  margin: 20px;
+}
+
+.user-header-image {
+  background-image: url('https://www.w3schools.com/w3images/avatar2.png');
+  background-size: cover;
+}
+
+.user-details {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
