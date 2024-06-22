@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
+import { Router } from '@angular/router'; // Import Router
 
 @Component({
   selector: 'app-user-account',
@@ -11,7 +12,7 @@ export class UserAccountComponent implements OnInit {
   user: any = {};
   userId: string | null = '';
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) {} // Inject Router
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('userId');
@@ -33,20 +34,7 @@ export class UserAccountComponent implements OnInit {
     }
   }
 
-  registerUser(): void {
-    const newUser = {
-      username: 'testuser',
-      email: 'testuser@example.com',
-      password: 'password123'
-    };
-
-    this.userService.registerUser(newUser).subscribe(
-      (response) => {
-        console.log('User registered successfully', response);
-      },
-      (error) => {
-        console.error('Error registering user', error);
-      }
-    );
+  navigateToUrl(): void {
+    this.router.navigate(['/auth']); // Specify your target URL
   }
 }
