@@ -8,6 +8,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   backdrop-filter: blur(10px); /* Blur effect for a frosted glass look */
   text-align: center;
+
 }
 
 .auth-container h2 {

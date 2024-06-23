@@ -1,4 +1,5 @@
 <div *ngIf="user" class="user-container">
+  <body>
   <mat-card class="user-card">
     <mat-card-header>
       <div mat-card-avatar class="user-header-image"></div>
@@ -15,6 +16,7 @@
       <button mat-button (click)="navigateToUrl()">Log out</button>
     </mat-card-actions>
   </mat-card>
+</body>
 </div>
 
 <div *ngIf="!user" class="loading-container">

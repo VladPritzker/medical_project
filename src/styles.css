@@ -9,6 +9,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
