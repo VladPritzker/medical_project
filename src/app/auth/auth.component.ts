@@ -26,7 +26,7 @@ export class AuthComponent {
 
   onSubmit() {
     if (!this.authData.email.endsWith('@gmail.com')) {
-      this.errorMessage = 'Email must be a valid gmail.com address.';
+      this.errorMessage = 'Email must be a valid @gmail.com address.';
       return;
     }
 
