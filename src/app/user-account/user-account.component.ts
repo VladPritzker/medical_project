@@ -31,9 +31,9 @@ export class UserAccountComponent implements OnInit {
           console.error('Error fetching user details', error);
         }
       );
+
     }
   }
-
   navigateToUrl(): void {
     this.router.navigate(['/auth']); // Specify your target URL
   }
