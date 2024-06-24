@@ -7,7 +7,6 @@ import { AuthService } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-
 export class AuthComponent {
   authData = {
     username: '',
@@ -16,14 +15,21 @@ export class AuthComponent {
   };
 
   isLoginMode = true;
+  errorMessage: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+    this.errorMessage = null;
   }
 
   onSubmit() {
+    if (!this.authData.email.endsWith('@gmail.com')) {
+      this.errorMessage = 'Email must be a valid gmail.com address.';
+      return;
+    }
+
     const loginData = {
       email: this.authData.email,
       password: this.authData.password
@@ -42,6 +48,7 @@ export class AuthComponent {
         this.router.navigate([`/user-account`, userId]); // Navigate to user-account page with user_id
       }, error => {
         console.error('Login failed', error);
+        this.errorMessage = 'Invalid email or password. Please try again.';
       });
     } else {
       this.authService.register(registerData).subscribe(response => {
@@ -50,6 +57,7 @@ export class AuthComponent {
         this.router.navigate([`/user-account`, userId]); // Navigate to user-account page with user_id
       }, error => {
         console.error('Registration failed', error);
+        this.errorMessage = 'Registration failed. Please try again.';
       });
     }
   }
