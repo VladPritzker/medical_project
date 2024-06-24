@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
 import { UserAccountComponent } from './user-account.component';
 import { UserService } from './user.service';
-import { of } from 'rxjs';
+import { of } from '../../../node_modules/rxjs/dist/types';
 
 describe('UserAccountComponent', () => {
   let component: UserAccountComponent;
