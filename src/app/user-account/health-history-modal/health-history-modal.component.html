@@ -1,0 +1,7 @@
+<div class="modal">
+  <h2>Health History</h2>
+  <ul>
+    <li *ngFor="let history of healthHistories">{{ history | json }}</li>
+  </ul>
+  <button (click)="closeModal()">Close</button>
+</div>

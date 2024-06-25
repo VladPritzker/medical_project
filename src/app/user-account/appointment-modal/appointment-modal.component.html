@@ -1,0 +1,7 @@
+<div class="modal">
+  <h2>Appointments</h2>
+  <ul>
+    <li *ngFor="let appointment of appointments">{{ appointment | json }}</li>
+  </ul>
+  <button (click)="closeModal()">Close</button>
+</div>
