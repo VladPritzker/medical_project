@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
-import { Router } from '@angular/router'; // Import Router
-import { AppointmentService } from './appointment-modal/appointment.service'; // Import AppointmentService
-import { HealthHistoryService } from './health-history-modal/health-history.service'; // Import HealthHistoryService
+import { Router } from '@angular/router';
+import { AppointmentService } from './appointment-modal/appointment.service';
+import { HealthHistoryService } from './health-history-modal/health-history.service';
 
 @Component({
   selector: 'app-user-account',
@@ -21,35 +21,34 @@ export class UserAccountComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router, // Inject Router
-    private appointmentService: AppointmentService, // Inject AppointmentService
-    private healthHistoryService: HealthHistoryService // Inject HealthHistoryService
+    private router: Router,
+    private appointmentService: AppointmentService,
+    private healthHistoryService: HealthHistoryService
   ) {}
 
   ngOnInit(): void {
-    const userIdParam = this.route.snapshot.paramMap.get('userId');
-    this.userId = userIdParam ? +userIdParam : null; // Convert userId to a number
-    if (this.userId !== null) {
+    const userId = this.route.snapshot.paramMap.get('userId');
+    if (userId) {
+      this.userId = +userId; // Convert string to number
       this.getUserDetails();
     }
   }
 
   getUserDetails(): void {
     if (this.userId !== null) {
-      this.userService.getUserDetails(this.userId.toString()).subscribe(
-        (data) => {
+      this.userService.getUserDetails(this.userId).subscribe(
+        (data: any) => {
           this.user = data;
         },
-        (error) => {
+        (error: any) => {
           console.error('Error fetching user details', error);
         }
       );
     }
   }
 
-
   navigateToUrl(): void {
-    this.router.navigate(['/auth']); // Specify your target URL
+    this.router.navigate(['/auth']);
   }
 
   openAppointmentsModal(): void {
@@ -64,10 +63,10 @@ export class UserAccountComponent implements OnInit {
   loadAppointments(): void {
     if (this.userId !== null) {
       this.appointmentService.getAppointments(this.userId).subscribe(
-        (data) => {
+        (data: any) => {
           this.appointments = data;
         },
-        (error) => {
+        (error: any) => {
           console.error('Error fetching appointments', error);
         }
       );
@@ -86,10 +85,10 @@ export class UserAccountComponent implements OnInit {
   loadHealthHistories(): void {
     if (this.userId !== null) {
       this.healthHistoryService.getHealthHistories(this.userId).subscribe(
-        (data) => {
+        (data: any) => {
           this.healthHistories = data;
         },
-        (error) => {
+        (error: any) => {
           console.error('Error fetching health histories', error);
         }
       );

@@ -1,7 +1,21 @@
 <div class="modal">
   <h2>Appointments</h2>
   <ul>
-    <li *ngFor="let appointment of appointments">{{ appointment | json }}</li>
+    <li *ngFor="let appointment of appointments">
+      <label>
+        Doctor:
+        <input [(ngModel)]="appointment.doctor">
+      </label><br>
+      <label>
+        Date:
+        <input type="datetime-local" [(ngModel)]="appointment.appointment_date">
+      </label><br>
+      <label>
+        Notes:
+        <textarea [(ngModel)]="appointment.notes"></textarea>
+      </label><br>
+      <button (click)="updateAppointment(appointment)">Update</button>
+    </li>
   </ul>
   <button (click)="closeModal()">Close</button>
 </div>

@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppointmentService {
-  private baseUrl = 'http://localhost:8001';
+  private baseUrl = 'http://localhost:8001';  // Update with your actual backend URL
 
   constructor(private http: HttpClient) {}
 
-  getAppointments(userId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/users/${userId}/appointments/`);
+  updateAppointment(userId: number, appointmentId: number, appointment: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/users/${userId}/appointments/${appointmentId}/`, appointment);
   }
 }

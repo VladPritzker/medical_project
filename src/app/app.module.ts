@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // Import FormsModule to use ngModel
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatButtonModule } from '@angular/material/button'; // Add MatButtonModule for Angular Material buttons
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -35,7 +35,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatCardModule,
     MatProgressSpinnerModule,
-    MatButtonModule // Add MatButtonModule here
+    MatButtonModule
   ],
   providers: [
     provideAnimationsAsync()
