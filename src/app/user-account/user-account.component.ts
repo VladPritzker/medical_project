@@ -2,11 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
-import { AppointmentService } from './appointment-modal/appointment.service';
-import { HealthHistoryService } from './health-history-modal/health-history.service';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-user-account',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    // Remove HealthHistoryModalComponent and AppointmentModalComponent imports here
+  ],
   templateUrl: './user-account.component.html',
   styleUrls: ['./user-account.component.css']
 })
@@ -22,8 +32,7 @@ export class UserAccountComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private appointmentService: AppointmentService,
-    private healthHistoryService: HealthHistoryService
+
   ) {}
 
   ngOnInit(): void {
@@ -51,47 +60,5 @@ export class UserAccountComponent implements OnInit {
     this.router.navigate(['/auth']);
   }
 
-  openAppointmentsModal(): void {
-    this.isAppointmentsModalOpen = true;
-    this.loadAppointments();
-  }
-
-  closeAppointmentsModal(): void {
-    this.isAppointmentsModalOpen = false;
-  }
-
-  loadAppointments(): void {
-    if (this.userId !== null) {
-      this.appointmentService.getAppointments(this.userId).subscribe(
-        (data: any) => {
-          this.appointments = data;
-        },
-        (error: any) => {
-          console.error('Error fetching appointments', error);
-        }
-      );
-    }
-  }
-
-  openHealthHistoryModal(): void {
-    this.isHealthHistoryModalOpen = true;
-    this.loadHealthHistories();
-  }
-
-  closeHealthHistoryModal(): void {
-    this.isHealthHistoryModalOpen = false;
-  }
-
-  loadHealthHistories(): void {
-    if (this.userId !== null) {
-      this.healthHistoryService.getHealthHistories(this.userId).subscribe(
-        (data: any) => {
-          this.healthHistories = data;
-        },
-        (error: any) => {
-          console.error('Error fetching health histories', error);
-        }
-      );
-    }
-  }
+  // Remove methods related to appointment and health history modals
 }
